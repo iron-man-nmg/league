@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.league.shop.dao.GoodsDao">
+
+	<select id="get" resultType="com.league.shop.domain.GoodsDO">
+		select `id`,`locale`,`category`,`gstype`,`name`,`sn`,`barcode`,`keywords`,`brand`,`intro`,`details`,`price`,`mprice`,`cprice`,`weight`,`freeshipping`,`points`,`inventory`,`promote`,`ctime`,`utime`,`status`,`csort`,`manager`,`mkeywords`,`mdescription`,`vistor` from shop_goods where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.league.shop.domain.GoodsDO">
+		select `id`,`locale`,`category`,`gstype`,`name`,`sn`,`barcode`,`keywords`,`brand`,`intro`,`details`,`price`,`mprice`,`cprice`,`weight`,`freeshipping`,`points`,`inventory`,`promote`,`ctime`,`utime`,`status`,`csort`,`manager`,`mkeywords`,`mdescription`,`vistor` from shop_goods
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="locale != null and locale != ''"> and locale = #{locale} </if>
+		  		  <if test="category != null and category != ''"> and category = #{category} </if>
+		  		  <if test="gstype != null and gstype != ''"> and gstype = #{gstype} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="sn != null and sn != ''"> and sn = #{sn} </if>
+		  		  <if test="barcode != null and barcode != ''"> and barcode = #{barcode} </if>
+		  		  <if test="keywords != null and keywords != ''"> and keywords = #{keywords} </if>
+		  		  <if test="brand != null and brand != ''"> and brand = #{brand} </if>
+		  		  <if test="intro != null and intro != ''"> and intro = #{intro} </if>
+		  		  <if test="details != null and details != ''"> and details = #{details} </if>
+		  		  <if test="price != null and price != ''"> and price = #{price} </if>
+		  		  <if test="mprice != null and mprice != ''"> and mprice = #{mprice} </if>
+		  		  <if test="cprice != null and cprice != ''"> and cprice = #{cprice} </if>
+		  		  <if test="weight != null and weight != ''"> and weight = #{weight} </if>
+		  		  <if test="freeshipping != null and freeshipping != ''"> and freeshipping = #{freeshipping} </if>
+		  		  <if test="points != null and points != ''"> and points = #{points} </if>
+		  		  <if test="inventory != null and inventory != ''"> and inventory = #{inventory} </if>
+		  		  <if test="promote != null and promote != ''"> and promote = #{promote} </if>
+		  		  <if test="ctime != null and ctime != ''"> and ctime = #{ctime} </if>
+		  		  <if test="utime != null and utime != ''"> and utime = #{utime} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="csort != null and csort != ''"> and csort = #{csort} </if>
+		  		  <if test="manager != null and manager != ''"> and manager = #{manager} </if>
+		  		  <if test="mkeywords != null and mkeywords != ''"> and mkeywords = #{mkeywords} </if>
+		  		  <if test="mdescription != null and mdescription != ''"> and mdescription = #{mdescription} </if>
+		  		  <if test="vistor != null and vistor != ''"> and vistor = #{vistor} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from shop_goods
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="locale != null and locale != ''"> and locale = #{locale} </if>
+		  		  <if test="category != null and category != ''"> and category = #{category} </if>
+		  		  <if test="gstype != null and gstype != ''"> and gstype = #{gstype} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="sn != null and sn != ''"> and sn = #{sn} </if>
+		  		  <if test="barcode != null and barcode != ''"> and barcode = #{barcode} </if>
+		  		  <if test="keywords != null and keywords != ''"> and keywords = #{keywords} </if>
+		  		  <if test="brand != null and brand != ''"> and brand = #{brand} </if>
+		  		  <if test="intro != null and intro != ''"> and intro = #{intro} </if>
+		  		  <if test="details != null and details != ''"> and details = #{details} </if>
+		  		  <if test="price != null and price != ''"> and price = #{price} </if>
+		  		  <if test="mprice != null and mprice != ''"> and mprice = #{mprice} </if>
+		  		  <if test="cprice != null and cprice != ''"> and cprice = #{cprice} </if>
+		  		  <if test="weight != null and weight != ''"> and weight = #{weight} </if>
+		  		  <if test="freeshipping != null and freeshipping != ''"> and freeshipping = #{freeshipping} </if>
+		  		  <if test="points != null and points != ''"> and points = #{points} </if>
+		  		  <if test="inventory != null and inventory != ''"> and inventory = #{inventory} </if>
+		  		  <if test="promote != null and promote != ''"> and promote = #{promote} </if>
+		  		  <if test="ctime != null and ctime != ''"> and ctime = #{ctime} </if>
+		  		  <if test="utime != null and utime != ''"> and utime = #{utime} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="csort != null and csort != ''"> and csort = #{csort} </if>
+		  		  <if test="manager != null and manager != ''"> and manager = #{manager} </if>
+		  		  <if test="mkeywords != null and mkeywords != ''"> and mkeywords = #{mkeywords} </if>
+		  		  <if test="mdescription != null and mdescription != ''"> and mdescription = #{mdescription} </if>
+		  		  <if test="vistor != null and vistor != ''"> and vistor = #{vistor} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.league.shop.domain.GoodsDO">
+		insert into shop_goods
+		(
+			`id`, 
+			`locale`, 
+			`category`, 
+			`gstype`, 
+			`name`, 
+			`sn`, 
+			`barcode`, 
+			`keywords`, 
+			`brand`, 
+			`intro`, 
+			`details`, 
+			`price`, 
+			`mprice`, 
+			`cprice`, 
+			`weight`, 
+			`freeshipping`, 
+			`points`, 
+			`inventory`, 
+			`promote`, 
+			`ctime`, 
+			`utime`, 
+			`status`, 
+			`csort`, 
+			`manager`, 
+			`mkeywords`, 
+			`mdescription`, 
+			`vistor`
+		)
+		values
+		(
+			#{id}, 
+			#{locale}, 
+			#{category}, 
+			#{gstype}, 
+			#{name}, 
+			#{sn}, 
+			#{barcode}, 
+			#{keywords}, 
+			#{brand}, 
+			#{intro}, 
+			#{details}, 
+			#{price}, 
+			#{mprice}, 
+			#{cprice}, 
+			#{weight}, 
+			#{freeshipping}, 
+			#{points}, 
+			#{inventory}, 
+			#{promote}, 
+			#{ctime}, 
+			#{utime}, 
+			#{status}, 
+			#{csort}, 
+			#{manager}, 
+			#{mkeywords}, 
+			#{mdescription}, 
+			#{vistor}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.league.shop.domain.GoodsDO">
+		update shop_goods 
+		<set>
+			<if test="locale != null">`locale` = #{locale}, </if>
+			<if test="category != null">`category` = #{category}, </if>
+			<if test="gstype != null">`gstype` = #{gstype}, </if>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="sn != null">`sn` = #{sn}, </if>
+			<if test="barcode != null">`barcode` = #{barcode}, </if>
+			<if test="keywords != null">`keywords` = #{keywords}, </if>
+			<if test="brand != null">`brand` = #{brand}, </if>
+			<if test="intro != null">`intro` = #{intro}, </if>
+			<if test="details != null">`details` = #{details}, </if>
+			<if test="price != null">`price` = #{price}, </if>
+			<if test="mprice != null">`mprice` = #{mprice}, </if>
+			<if test="cprice != null">`cprice` = #{cprice}, </if>
+			<if test="weight != null">`weight` = #{weight}, </if>
+			<if test="freeshipping != null">`freeshipping` = #{freeshipping}, </if>
+			<if test="points != null">`points` = #{points}, </if>
+			<if test="inventory != null">`inventory` = #{inventory}, </if>
+			<if test="promote != null">`promote` = #{promote}, </if>
+			<if test="ctime != null">`ctime` = #{ctime}, </if>
+			<if test="utime != null">`utime` = #{utime}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="csort != null">`csort` = #{csort}, </if>
+			<if test="manager != null">`manager` = #{manager}, </if>
+			<if test="mkeywords != null">`mkeywords` = #{mkeywords}, </if>
+			<if test="mdescription != null">`mdescription` = #{mdescription}, </if>
+			<if test="vistor != null">`vistor` = #{vistor}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from shop_goods where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from shop_goods where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
