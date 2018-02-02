@@ -1,17 +1,12 @@
 package com.league.common.utils;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.subject.Subject;
-import org.crazycake.shiro.RedisSessionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.league.system.domain.UserDO;
-import com.league.system.domain.UserToken;
-
-import java.lang.reflect.InvocationTargetException;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
@@ -23,6 +18,7 @@ public class ShiroUtils {
     public static Subject getSubjct() {
         return SecurityUtils.getSubject();
     }
+
     public static UserDO getUser() {
         Object object = getSubjct().getPrincipal();
         return (UserDO)object;

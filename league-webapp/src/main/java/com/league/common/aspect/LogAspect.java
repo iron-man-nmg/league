@@ -2,10 +2,6 @@ package com.league.common.aspect;
 
 import java.lang.reflect.Method;
 import java.util.Date;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -24,7 +20,6 @@ import com.league.common.utils.IPUtils;
 import com.league.common.utils.JSONUtils;
 import com.league.common.utils.ShiroUtils;
 import com.league.system.domain.UserDO;
-import com.league.system.domain.UserToken;
 
 @Aspect
 @Component
