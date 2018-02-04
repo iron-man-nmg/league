@@ -1,27 +1,17 @@
 package com.league.uhome.controller;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.league.common.annotation.Log;
 import com.league.common.controller.BaseController;
 import com.league.common.domain.FileDO;
 import com.league.common.domain.Tree;
 import com.league.common.service.FileService;
-import com.league.common.utils.MD5Utils;
-import com.league.common.utils.R;
-import com.league.common.utils.ShiroUtils;
 import com.league.system.domain.MenuDO;
 import com.league.system.service.MenuService;
 

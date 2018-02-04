@@ -1,5 +1,5 @@
 league:
-  uploadPath: D:/var/uploaded_files/
+  uploadPath: /Users/stone/upload
 logging:
   level:
     com.league: debug

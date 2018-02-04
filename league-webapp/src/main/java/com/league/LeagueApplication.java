@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class LeagueApplication {
     public static void main(String[] args) {
         SpringApplication.run(LeagueApplication.class, args);
-        System.out.println("ヾ(◍°∇°◍)ﾉﾞ    bootdo启动成功      ヾ(◍°∇°◍)ﾉﾞ\n" +
+        System.out.println("ヾ(◍°∇°◍)ﾉﾞ    league启动成功      ヾ(◍°∇°◍)ﾉﾞ\n" +
                 " ______                    _   ______            \n" +
                 "|_   _ \\                  / |_|_   _ `.          \n" +
                 "  | |_) |   .--.    .--. `| |-' | | `. \\  .--.   \n" +

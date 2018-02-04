@@ -80,8 +80,10 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/upload/**", "anon");
         filterChainDefinitionMap.put("/files/**", "anon");
-        filterChainDefinitionMap.put("/home/**", "anon");
-        filterChainDefinitionMap.put("/shop/**", "anon");
+        //门户静态资源
+        filterChainDefinitionMap.put("/h/**", "anon");
+        //商城静态资源
+        filterChainDefinitionMap.put("/s/**", "anon");
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/blog", "anon");
         filterChainDefinitionMap.put("/blog/open/**", "anon");
