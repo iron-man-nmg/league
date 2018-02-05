@@ -13,13 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.league.common.annotation.Log;
-import com.league.common.dao.LogDao;
-import com.league.common.domain.LogDO;
 import com.league.common.utils.HttpContextUtils;
 import com.league.common.utils.IPUtils;
 import com.league.common.utils.JSONUtils;
 import com.league.common.utils.ShiroUtils;
-import com.league.system.domain.UserDO;
+import com.league.dal.common.dao.LogDao;
+import com.league.dal.common.domain.LogDO;
+import com.league.dal.userrole.domain.UserDO;
 
 @Aspect
 @Component

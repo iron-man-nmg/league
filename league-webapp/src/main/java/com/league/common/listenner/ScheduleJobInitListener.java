@@ -5,8 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import com.league.admin.service.common.JobService;
 import com.league.common.quartz.utils.QuartzManager;
-import com.league.common.service.JobService;
 
 @Component
 @Order(value = 1)

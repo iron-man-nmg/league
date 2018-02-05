@@ -8,10 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.league.admin.service.common.FileService;
 import com.league.common.config.LeagueConfig;
-import com.league.common.domain.FileDO;
-import com.league.common.service.FileService;
 import com.league.common.utils.*;
+import com.league.dal.common.domain.FileDO;
 
 import java.util.Date;
 import java.util.HashMap;

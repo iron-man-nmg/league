@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.league.dal.shop.dao.DocumentDao">
+
+	<select id="get" resultType="com.league.dal.shop.domain.DocumentDO">
+		select `id`,`manager`,`local`,`title`,`attachment`,`brief`,`content`,`doccate`,`marker`,`vistor`,`csort`,`cdate` from shop_document where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.league.dal.shop.domain.DocumentDO">
+		select `id`,`manager`,`local`,`title`,`attachment`,`brief`,`content`,`doccate`,`marker`,`vistor`,`csort`,`cdate` from shop_document
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="manager != null and manager != ''"> and manager = #{manager} </if>
+		  		  <if test="local != null and local != ''"> and local = #{local} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="attachment != null and attachment != ''"> and attachment = #{attachment} </if>
+		  		  <if test="brief != null and brief != ''"> and brief = #{brief} </if>
+		  		  <if test="content != null and content != ''"> and content = #{content} </if>
+		  		  <if test="doccate != null and doccate != ''"> and doccate = #{doccate} </if>
+		  		  <if test="marker != null and marker != ''"> and marker = #{marker} </if>
+		  		  <if test="vistor != null and vistor != ''"> and vistor = #{vistor} </if>
+		  		  <if test="csort != null and csort != ''"> and csort = #{csort} </if>
+		  		  <if test="cdate != null and cdate != ''"> and cdate = #{cdate} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from shop_document
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="manager != null and manager != ''"> and manager = #{manager} </if>
+		  		  <if test="local != null and local != ''"> and local = #{local} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="attachment != null and attachment != ''"> and attachment = #{attachment} </if>
+		  		  <if test="brief != null and brief != ''"> and brief = #{brief} </if>
+		  		  <if test="content != null and content != ''"> and content = #{content} </if>
+		  		  <if test="doccate != null and doccate != ''"> and doccate = #{doccate} </if>
+		  		  <if test="marker != null and marker != ''"> and marker = #{marker} </if>
+		  		  <if test="vistor != null and vistor != ''"> and vistor = #{vistor} </if>
+		  		  <if test="csort != null and csort != ''"> and csort = #{csort} </if>
+		  		  <if test="cdate != null and cdate != ''"> and cdate = #{cdate} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.league.dal.shop.domain.DocumentDO">
+		insert into shop_document
+		(
+			`id`, 
+			`manager`, 
+			`local`, 
+			`title`, 
+			`attachment`, 
+			`brief`, 
+			`content`, 
+			`doccate`, 
+			`marker`, 
+			`vistor`, 
+			`csort`, 
+			`cdate`
+		)
+		values
+		(
+			#{id}, 
+			#{manager}, 
+			#{local}, 
+			#{title}, 
+			#{attachment}, 
+			#{brief}, 
+			#{content}, 
+			#{doccate}, 
+			#{marker}, 
+			#{vistor}, 
+			#{csort}, 
+			#{cdate}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.league.dal.shop.domain.DocumentDO">
+		update shop_document 
+		<set>
+			<if test="manager != null">`manager` = #{manager}, </if>
+			<if test="local != null">`local` = #{local}, </if>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="attachment != null">`attachment` = #{attachment}, </if>
+			<if test="brief != null">`brief` = #{brief}, </if>
+			<if test="content != null">`content` = #{content}, </if>
+			<if test="doccate != null">`doccate` = #{doccate}, </if>
+			<if test="marker != null">`marker` = #{marker}, </if>
+			<if test="vistor != null">`vistor` = #{vistor}, </if>
+			<if test="csort != null">`csort` = #{csort}, </if>
+			<if test="cdate != null">`cdate` = #{cdate}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from shop_document where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from shop_document where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

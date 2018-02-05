@@ -1,7 +1,7 @@
 package com.league.common.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.league.common.service.GeneratorService;
+import com.league.admin.service.common.GeneratorService;
 import com.league.common.utils.GenUtils;
 import com.league.common.utils.R;
 
