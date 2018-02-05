@@ -19,6 +19,10 @@
 	</parent>
 
 	<modules>
+		<module>league-dal</module>
+		<module>league-common</module>
+		<module>league-admin</module>
+		<module>league-shop</module>
 		<module>league-webapp</module>
 	</modules>
 
@@ -34,6 +38,26 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>com.league</groupId>
+				<artifactId>league-dal</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.league</groupId>
+				<artifactId>league-common</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.league</groupId>
+				<artifactId>league-admin</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.league</groupId>
+				<artifactId>league-shop</artifactId>
+				<version>1.0.0</version>
+			</dependency>
 			<dependency>
 				<groupId>com.league</groupId>
 				<artifactId>league-webapp</artifactId>
@@ -184,17 +208,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<executable>true</executable>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 	<repositories>
 		<repository>
 			<id>public</id>

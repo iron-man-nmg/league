@@ -5,12 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.league.admin.service.common.JobService;
 import com.league.common.config.Constant;
-import com.league.common.domain.TaskDO;
-import com.league.common.service.JobService;
 import com.league.common.utils.PageUtils;
 import com.league.common.utils.Query;
 import com.league.common.utils.R;
+import com.league.dal.common.domain.TaskDO;
 
 import java.util.List;
 import java.util.Map;

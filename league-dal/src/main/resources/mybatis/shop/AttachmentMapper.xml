@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.league.dal.shop.dao.AttachmentDao">
+
+	<select id="get" resultType="com.league.dal.shop.domain.AttachmentDO">
+		select `id`,`name`,`ftype`,`status`,`sort`,`path`,`oname`,`details`,`manager`,`goods`,`document`,`url`,`ctime` from shop_attachment where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.league.dal.shop.domain.AttachmentDO">
+		select `id`,`name`,`ftype`,`status`,`sort`,`path`,`oname`,`details`,`manager`,`goods`,`document`,`url`,`ctime` from shop_attachment
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="ftype != null and ftype != ''"> and ftype = #{ftype} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
+		  		  <if test="path != null and path != ''"> and path = #{path} </if>
+		  		  <if test="oname != null and oname != ''"> and oname = #{oname} </if>
+		  		  <if test="details != null and details != ''"> and details = #{details} </if>
+		  		  <if test="manager != null and manager != ''"> and manager = #{manager} </if>
+		  		  <if test="goods != null and goods != ''"> and goods = #{goods} </if>
+		  		  <if test="document != null and document != ''"> and document = #{document} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="ctime != null and ctime != ''"> and ctime = #{ctime} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from shop_attachment
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+		  		  <if test="ftype != null and ftype != ''"> and ftype = #{ftype} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
+		  		  <if test="path != null and path != ''"> and path = #{path} </if>
+		  		  <if test="oname != null and oname != ''"> and oname = #{oname} </if>
+		  		  <if test="details != null and details != ''"> and details = #{details} </if>
+		  		  <if test="manager != null and manager != ''"> and manager = #{manager} </if>
+		  		  <if test="goods != null and goods != ''"> and goods = #{goods} </if>
+		  		  <if test="document != null and document != ''"> and document = #{document} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="ctime != null and ctime != ''"> and ctime = #{ctime} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.league.dal.shop.domain.AttachmentDO">
+		insert into shop_attachment
+		(
+			`id`, 
+			`name`, 
+			`ftype`, 
+			`status`, 
+			`sort`, 
+			`path`, 
+			`oname`, 
+			`details`, 
+			`manager`, 
+			`goods`, 
+			`document`, 
+			`url`, 
+			`ctime`
+		)
+		values
+		(
+			#{id}, 
+			#{name}, 
+			#{ftype}, 
+			#{status}, 
+			#{sort}, 
+			#{path}, 
+			#{oname}, 
+			#{details}, 
+			#{manager}, 
+			#{goods}, 
+			#{document}, 
+			#{url}, 
+			#{ctime}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.league.dal.shop.domain.AttachmentDO">
+		update shop_attachment 
+		<set>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="ftype != null">`ftype` = #{ftype}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="sort != null">`sort` = #{sort}, </if>
+			<if test="path != null">`path` = #{path}, </if>
+			<if test="oname != null">`oname` = #{oname}, </if>
+			<if test="details != null">`details` = #{details}, </if>
+			<if test="manager != null">`manager` = #{manager}, </if>
+			<if test="goods != null">`goods` = #{goods}, </if>
+			<if test="document != null">`document` = #{document}, </if>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="ctime != null">`ctime` = #{ctime}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from shop_attachment where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from shop_attachment where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

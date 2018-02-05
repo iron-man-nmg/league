@@ -3,7 +3,7 @@ package com.league.common.controller;
 import org.springframework.stereotype.Controller;
 
 import com.league.common.utils.ShiroUtils;
-import com.league.system.domain.UserDO;
+import com.league.dal.userrole.domain.UserDO;
 
 @Controller
 public class BaseController {

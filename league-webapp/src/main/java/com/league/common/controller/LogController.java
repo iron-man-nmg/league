@@ -1,12 +1,8 @@
 package com.league.common.controller;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
-import org.aspectj.weaver.tools.cache.AsynchronousFileCacheBacking.RemoveCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.league.common.domain.LogDO;
-import com.league.common.domain.PageDO;
-import com.league.common.service.LogService;
+import com.league.admin.service.common.LogService;
 import com.league.common.utils.Query;
 import com.league.common.utils.R;
+import com.league.dal.common.domain.LogDO;
+import com.league.dal.common.domain.PageDO;
 
 @RequestMapping("/common/log")
 @Controller

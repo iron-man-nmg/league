@@ -6,12 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.league.admin.service.common.DictService;
 import com.league.common.config.Constant;
-import com.league.common.domain.DictDO;
-import com.league.common.service.DictService;
 import com.league.common.utils.PageUtils;
 import com.league.common.utils.Query;
 import com.league.common.utils.R;
+import com.league.dal.common.domain.DictDO;
 
 import java.util.HashMap;
 import java.util.List;
